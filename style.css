@@ -51,8 +51,9 @@ button.link { border: 0; padding: 0; background: none; color: var(--text-2); fon
 #error { white-space: pre-wrap; font-size: 12px; color: var(--bad); border: 1px solid var(--bad); border-radius: 6px; padding: 8px; margin: 0 0 8px; font-family: inherit; }
 
 /* stat editor */
-.top-stats { display: grid; grid-template-columns: repeat(5, 1fr); gap: 5px; margin-bottom: 8px; }
-.stat label { display: flex; align-items: center; justify-content: center; gap: 3px; font-size: 11px; color: var(--text-2); margin-bottom: 2px; white-space: nowrap; }
+.top-stats { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 4px; margin-bottom: 8px; }
+.top-stats input { padding: 4px 2px; }
+.stat label { overflow: hidden; display: flex; align-items: center; justify-content: center; gap: 3px; font-size: 11px; color: var(--text-2); margin-bottom: 2px; white-space: nowrap; }
 .stat label svg { width: 13px; height: 13px; flex: none; }
 .tri { display: grid; grid-template-columns: 74px 1fr 1fr 1fr; gap: 5px; align-items: end; margin-bottom: 5px; }
 .tri .group { font-size: 12px; color: var(--text-2); padding-bottom: 6px; }
