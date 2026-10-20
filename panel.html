@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Combat Tokens</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="panel">
+  <p id="status" class="muted">Loading…</p>
+  <p id="no-scene" class="muted" hidden>Open a scene to use Combat Tokens.</p>
+
+  <div id="main" hidden>
+    <div class="tabs" role="tablist">
+      <button class="tab" role="tab" data-tab="init" aria-selected="true">Initiative</button>
+      <button class="tab" role="tab" data-tab="log" aria-selected="false">Attacks</button>
+      <button class="tab gm-only" role="tab" data-tab="setup" aria-selected="false">Setup</button>
+    </div>
+
+    <section data-panel="init">
+      <div class="gm-only">
+        <div class="buttons">
+          <button id="roll" class="primary">Roll initiative</button>
+          <button id="clear">Clear</button>
+        </div>
+        <label class="check"><input id="include-hidden" type="checkbox" /> Include hidden tokens</label>
+      </div>
+      <p class="muted" id="results-meta"></p>
+      <ol id="results"></ol>
+    </section>
+
+    <section data-panel="log" hidden>
+      <p class="muted" id="log-empty">No attacks yet in this scene.</p>
+      <ul class="log" id="log"></ul>
+      <div class="gm-only" style="margin-top:8px"><button id="clear-log" class="link">Clear attack log</button></div>
+    </section>
+
+    <section data-panel="setup" class="setup" hidden>
+      <p>Give every character token on the map combat stats (all zero) so their badges appear. Tokens that already have stats aren't changed.</p>
+      <button id="give-all" class="primary">Give stats to all characters</button>
+      <p>Then right-click a token and choose <b>Combat stats</b> to fill in its numbers, or to assign it to a player.</p>
+      <p>Players attack by right-clicking a target and choosing <b>Attack this target</b>.</p>
+    </section>
+  </div>
+  <p id="version">v1.0</p>
+  <script type="module" src="panel.js"></script>
+</body>
+</html>

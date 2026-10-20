@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Attack</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <p id="status" class="muted">Loading…</p>
+  <div id="form" hidden>
+    <label class="muted" for="attacker">Attacker</label>
+    <div class="vs">
+      <select id="attacker"></select>
+      <button id="roll" class="primary">Attack</button>
+    </div>
+    <p class="need" id="need"></p>
+    <div class="result" id="result" aria-live="polite"></div>
+  </div>
+  <script type="module" src="attack.js"></script>
+</body>
+</html>
