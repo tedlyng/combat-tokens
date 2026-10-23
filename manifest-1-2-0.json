@@ -1,0 +1,17 @@
+{
+  "name": "Combat Tokens",
+  "version": "1.2.0",
+  "manifest_version": 1,
+  "author": "Ted",
+  "description": "HP, defense, armor, shield and to-hit badges on tokens; d10 initiative; right-click attacks with automatic damage.",
+  "homepage_url": "https://github.com/tedlyng/combat-tokens",
+  "icon": "https://tedlyng.github.io/combat-tokens/icon.svg?v=1.2.0",
+  "background_url": "https://tedlyng.github.io/combat-tokens/background.html?v=1.2.0",
+  "action": {
+    "title": "Combat Tokens",
+    "icon": "https://tedlyng.github.io/combat-tokens/icon.svg?v=1.2.0",
+    "popover": "https://tedlyng.github.io/combat-tokens/panel.html?v=1.2.0",
+    "width": 360,
+    "height": 560
+  }
+}
