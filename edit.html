@@ -4,49 +4,68 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Combat stats</title>
-  <link rel="stylesheet" href="style.css?v=1.2.0" />
+  <link rel="stylesheet" href="style.css?v=1.4.0" />
 </head>
-<body>
+<body class="embed">
   <p id="status" class="muted">Loading…</p>
 
   <div id="none" hidden>
     <p class="muted">This token has no combat stats yet.</p>
     <button id="add" class="primary">Add combat stats</button>
+    <div class="gm-only-block" hidden>
+      <p class="muted" style="margin-top:10px">…or load a creature from the Béthorm bestiary:</p>
+      <div class="pick"><input type="text" class="monster" list="bestiary-list" placeholder="Type a name, e.g. Ahoggyá"><button class="load-monster">Load</button></div>
+    </div>
   </div>
+  <datalist id="bestiary-list"></datalist>
 
   <div id="form" hidden>
-    <div class="top-stats">
-      <div class="stat"><label for="hp"><svg viewBox="-1 -1 2 2"><path d="M0 .9C-.35.62-1 .2-1-.32-1-.78-.62-1-.33-1-.12-1 0-.84 0-.66 0-.84.12-1 .33-1 .62-1 1-.78 1-.32 1 .2.35.62 0 .9Z" fill="#c62828"/></svg>HP</label><input id="hp" type="number" inputmode="numeric" /></div>
-      <div class="stat"><label for="hpMax" title="Maximum HP, used for the coloured health ring">Max</label><input id="hpMax" type="number" inputmode="numeric" /></div>
-      <div class="stat"><label for="defense"><svg viewBox="-1 -1 2 2"><circle r=".75" fill="none" stroke="#2f6fe0" stroke-width=".35"/></svg>Def</label><input id="defense" type="number" inputmode="numeric" /></div>
-      <div class="stat"><label for="armor"><svg viewBox="-1 -1 2 2"><circle r=".72" fill="none" stroke="#a7b1ba" stroke-width=".45"/></svg>Armor</label><input id="armor" type="number" inputmode="numeric" /></div>
-      <div class="stat"><label for="shield"><svg viewBox="-1 -1 2 2"><path d="M-.82-.86C-.35-.72.35-.72.82-.86L.82-.05C.82.48.42.8 0 .98-.42.8-.82.48-.82-.05Z" fill="#9c6b2f"/></svg>Shield</label><input id="shield" type="number" inputmode="numeric" /></div>
-      <div class="stat"><label for="toHit"><svg viewBox="-1 -1 2 2"><g transform="rotate(45)"><path d="M0-1 .14-.78.14.38-.14.38-.14-.78Z" fill="#d9dee3"/><path d="M-.52.38H.52V.52H-.52ZM-.09.52H.09V.84H-.09Z" fill="#c9a248"/></g></svg>To-hit</label><input id="toHit" type="number" inputmode="numeric" /></div>
+    <div class="tabs small" role="tablist">
+      <button class="tab" data-tab="stats" aria-selected="true">Stats</button>
+      <button class="tab" data-tab="weapons" aria-selected="false">Weapons</button>
+      <button class="tab" data-tab="notes" aria-selected="false">Notes</button>
     </div>
 
-    <div class="tri">
-      <span class="group">Damage</span>
-      <div class="stat"><label for="dmgLow">Low 1–2</label><input id="dmgLow" type="number" inputmode="numeric" /></div>
-      <div class="stat"><label for="dmgMid">Med 3–8</label><input id="dmgMid" type="number" inputmode="numeric" /></div>
-      <div class="stat"><label for="dmgHigh">High 9–10</label><input id="dmgHigh" type="number" inputmode="numeric" /></div>
-    </div>
-    <div class="tri">
-      <span class="group">Initiative</span>
-      <div class="stat"><label for="initLow">Low 1–2</label><input id="initLow" type="number" inputmode="numeric" /></div>
-      <div class="stat"><label for="initMid">Med 3–8</label><input id="initMid" type="number" inputmode="numeric" /></div>
-      <div class="stat"><label for="initHigh">High 9–10</label><input id="initHigh" type="number" inputmode="numeric" /></div>
-    </div>
+    <section data-panel="stats">
+      <div class="row5">
+        <div class="stat"><label for="hp"><svg viewBox="-1 -1 2 2"><path d="M0 .9C-.35.62-1 .2-1-.32-1-.78-.62-1-.33-1-.12-1 0-.84 0-.66 0-.84.12-1 .33-1 .62-1 1-.78 1-.32 1 .2.35.62 0 .9Z" fill="#b0302a"/></svg>HP</label><input id="hp" data-num type="number" inputmode="numeric" /></div>
+        <div class="stat"><label for="hpMax" title="Maximum HP: sets the health ring colour">Max</label><input id="hpMax" data-num type="number" inputmode="numeric" /></div>
+        <div class="stat"><label for="defense"><svg viewBox="-1 -1 2 2"><circle r=".72" fill="none" stroke="#4f83c2" stroke-width=".38"/></svg>Def</label><input id="defense" data-num type="number" inputmode="numeric" /></div>
+        <div class="stat"><label for="armor"><svg viewBox="-1 -1 2 2"><circle r=".72" fill="none" stroke="#a3abb3" stroke-width=".38"/></svg>Armor</label><input id="armor" data-num type="number" inputmode="numeric" /></div>
+        <div class="stat"><label for="shield"><svg viewBox="-1 -1 2 2"><path d="M-.8-.85C-.35-.72.35-.72.8-.85L.8-.05C.8.48.42.8 0 .98-.42.8-.8.48-.8-.05Z" fill="#a9772f"/></svg>Shield</label><input id="shield" data-num type="number" inputmode="numeric" /></div>
+      </div>
+      <div class="row5">
+        <div class="stat"><label for="resist" title="Resist sorcery"><svg viewBox="-1 -1 2 2"><circle r=".85" fill="none" stroke="#9a7bd6" stroke-width=".2"/><polygon fill="#9a7bd6" points="0,-.7 .14,-.14 .7,0 .14,.14 0,.7 -.14,.14 -.7,0 -.14,-.14"/></svg>Resist</label><input id="resist" data-num type="number" inputmode="numeric" /></div>
+        <div class="stat"><label for="move" title="Movement in hexes (hidden; shown as a circle when selected)"><svg viewBox="0 0 24 24"><path fill="#cfc6b4" d="M8 3c1.7 0 2.6 1.9 2.4 4.2-.2 2-1 3.6-2.6 3.6S5.3 9.4 5.4 7.4C5.5 5 6.4 3 8 3zm-2 9.3 4.3.5c.2 2.2-.6 3.9-2.3 3.9-1.5 0-2.3-1.6-2-4.4zM16 6c1.6 0 2.5 1.9 2.6 4.4.1 2-.9 3.4-2.4 3.4s-2.4-1.6-2.6-3.6C13.4 7.9 14.3 6 16 6zm-2.3 9.3 4.3-.5c.3 2.8-.5 4.4-2 4.4-1.7 0-2.5-1.7-2.3-3.9z"/></svg>Move</label><input id="move" data-num type="number" inputmode="numeric" /></div>
+      </div>
+      <div class="tri">
+        <span class="group">Initiative</span>
+        <div class="stat"><label for="initLow">Low 1–2</label><input id="initLow" data-num type="number" inputmode="numeric" /></div>
+        <div class="stat"><label for="initMid">Med 3–8</label><input id="initMid" data-num type="number" inputmode="numeric" /></div>
+        <div class="stat"><label for="initHigh">High 9–10</label><input id="initHigh" data-num type="number" inputmode="numeric" /></div>
+      </div>
+    </section>
 
-    <div class="owner gm-owner" hidden>
-      <span>Player</span>
-      <select id="owner"></select>
-    </div>
+    <section data-panel="weapons" hidden>
+      <div id="weapons"></div>
+      <div class="gmrow"><button id="add-weapon" class="link">+ Add weapon</button><span class="muted">Range 1 = melee</span></div>
+    </section>
 
-    <div class="foot">
+    <section data-panel="notes" hidden>
+      <label class="muted" for="note">Public note — everyone sees it when the token is clicked</label>
+      <textarea id="note" maxlength="400" placeholder="e.g. Spear, short bow, hide armor"></textarea>
+    </section>
+
+    <div class="gm-only-block" hidden>
+      <div class="sep"></div>
+      <div class="gmrow"><span>Player</span><select id="owner"></select></div>
+      <div class="gmrow" style="margin-top:5px"><span>Bestiary</span><span class="pick"><input type="text" class="monster" list="bestiary-list" placeholder="Replace with a creature…"><button class="load-monster">Load</button></span></div>
+    </div>
+    <div class="gmrow foot">
       <span id="save-state"></span>
-      <button id="remove" class="link" hidden>Remove stats</button>
+      <span class="links gm-only-block" hidden><button id="save-template" class="link">Save as template</button><button id="remove" class="link">Remove</button></span>
     </div>
   </div>
-  <script type="module" src="edit.js?v=1.2.0"></script>
+  <script type="module" src="edit.js?v=1.4.0"></script>
 </body>
 </html>

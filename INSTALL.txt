@@ -1,121 +1,44 @@
-COMBAT TOKENS 1.2.0: INSTALLING / UPDATING
-==========================================
+COMBAT TOKENS 1.4.0: UPDATING
+=============================
 
-Takes about 15 minutes. Your tokens keep the stats you already entered.
+Takes about 10 minutes. Tokens, templates and player assignments are all kept.
+New in 1.4.0: the Béthorm bestiary is built in (the new file bestiary.json).
 
-The new address you'll give Owlbear is:
-    https://tedlyng.github.io/combat-tokens/manifest-1-2-0.json
-
-
-PART 1: UNZIP
--------------
-1. In Finder, open your Downloads folder.
-2. Double-click combat-tokens.zip. A folder called "combat-tokens" appears
-   next to it. (If one already exists from before, the new one may be called
-   "combat-tokens 2". Use the newest one.)
-3. Open that folder. You should see 16 files plus a folder called "source":
-     attack.html      attack.js        background.html   background.js
-     edit.html        edit.js          panel.html        panel.js
-     style.css        icon.svg         stats.svg         sword.svg
-     manifest.json    manifest-1-2-0.json
-     README.md        INSTALL.txt
-   Do NOT upload the "source" folder. It's only there for safekeeping.
+The new address for Owlbear is:
+    https://tedlyng.github.io/combat-tokens/manifest-1-4-0.json
 
 
-PART 2: UPLOAD TO GITHUB
-------------------------
-1. Go to https://github.com/tedlyng/combat-tokens and sign in if asked.
-2. You'll see a list of your existing files. Above the list, on the right,
-   click the "Add file" button, then "Upload files".
-3. Go back to the Finder window showing the combat-tokens folder.
-   Press Cmd+A to select everything, then hold Cmd and click the "source"
-   folder once to UN-select it. (16 files are now selected.)
-4. Drag the selected files onto the GitHub page, onto the box that says
-   "Drag files here to add them to your repository".
-5. Wait until all 16 file names appear in a list below that box.
-   Files that already exist will simply be replaced; that's what we want.
-6. Scroll to the bottom of the page and click the green "Commit changes"
-   button.
-7. You'll land back on the file list. Check that manifest-1-2-0.json is in it.
+1. UNZIP
+   Double-click combat-tokens.zip in Downloads and open the new folder.
+   Upload everything EXCEPT the "source" folder: 20 files.
 
+2. UPLOAD TO GITHUB
+   - Go to https://github.com/tedlyng/combat-tokens
+   - Add file > Upload files.
+   - In Finder: Cmd+A, then Cmd-click "source" to un-select it. Drag the files in.
+   - Wait for all names to appear, then click the green "Commit changes".
 
-PART 3: WAIT FOR GITHUB TO PUBLISH (1-3 minutes)
-------------------------------------------------
-1. At the top of the repository page, click the "Actions" tab.
-2. The top entry is called "pages build and deployment". Wait until it
-   shows a green tick (a yellow dot means it's still working).
-3. Open this address in your browser:
-       https://tedlyng.github.io/combat-tokens/manifest-1-2-0.json
-   You should see a short block of text containing:
-       "version": "1.2.0"
-   If you see "404 File not found", wait a minute and refresh.
+3. WAIT FOR GITHUB (1-3 minutes)
+   - Actions tab: wait for a green tick on "pages build and deployment".
+   - Open https://tedlyng.github.io/combat-tokens/manifest-1-4-0.json
+     It should say "version": "1.4.0". If "404", wait a minute and refresh.
 
+4. REPLACE THE EXTENSION IN OWLBEAR
+   - Profile > My Extensions: remove every "Combat Tokens" entry.
+   - Add an extension with exactly:
+       https://tedlyng.github.io/combat-tokens/manifest-1-4-0.json
+   - Check it shows 1.4.0.
 
-PART 4: REPLACE THE EXTENSION IN OWLBEAR
-----------------------------------------
-Owlbear keeps its own copy of an extension from the day you added it, so an
-update must be added at a NEW address. Remove the old one first.
+5. TURN IT ON IN YOUR ROOM
+   - Switch Combat Tokens on in the room's extension settings.
+   - Cmd+Shift+R to reload. The panel's bottom corner must say v1.4.0.
+   - Players: reload too (Cmd+Shift+R / Ctrl+Shift+R).
 
-1. Go to https://www.owlbear.rodeo and sign in.
-2. Go to your Profile page and scroll down to "My Extensions".
-3. Find every entry called "Combat Tokens" (there may be more than one).
-   Remove each one (open its menu, the three dots or similar, and choose
-   remove/delete).
-4. Still in My Extensions, click the button to add an extension (a "+" or
-   "Add").
-5. Paste exactly:
-       https://tedlyng.github.io/combat-tokens/manifest-1-2-0.json
-   and confirm.
-6. Check the new Combat Tokens entry shows version 1.2.0.
-
-
-PART 5: TURN IT ON IN YOUR ROOM
--------------------------------
-1. Open your game room.
-2. Open the room's extension settings (from the room menu / extensions
-   button) and make sure Combat Tokens is switched on. Removing the old
-   copy usually switches it off.
-3. Press Cmd+Shift+R to reload the room page completely.
-4. Click the Combat Tokens icon in the toolbar (top left). The bottom-right
-   corner of the panel must say "v1.2.0". If it says anything older, repeat
-   step 3; if it still does, redo Part 4.
-
-
-PART 6: SET MAX HP SO THE RINGS APPEAR
---------------------------------------
-1. Right-click a token and choose "Combat stats".
-2. The top row reads: HP, Max, Def, Armor, Shield, To-hit.
-3. Type the token's maximum HP into "Max". The ring appears at once:
-     green  = 75% of max HP or more
-     yellow = 25% to 74%
-     red    = 1% to 24%
-     grey   = 0 or below
-   A token with no Max has no ring.
-4. Do this for each token. While you're there, assign player characters
-   with the "Player" drop-down (the player must be in the room to be listed).
-
-
-PART 7: PLAYERS
----------------
-Players install nothing. Ask each to reload the room page (Cmd+Shift+R on a
-Mac, Ctrl+Shift+R on Windows) once you've done the above. They will then see:
-  - health rings on every visible token,
-  - badges only on their own characters,
-  - no enemy numbers in attack results, the log, or initiative.
-
-
-THE RULES IT USES
------------------
-To hit:  2d10 must be UNDER  attacker's To-hit - target's Defense - target's Shield
-Damage:  d10: 1-2 Low, 3-8 Medium, 9-10 High damage, minus target's Armor (min 0)
-Initiative: d10: 1-2 Low, 3-8 Medium, 9-10 High initiative value, highest first
-
+6. TRY IT
+   - Drop any monster token on the map and rename it "Ahoggya, Medium/Soldier".
+     Its rings and badges should appear at once (HP 14, Def 1, Armor 3).
+   - Or right-click a token > Combat stats > Bestiary box: type, pick, Load.
 
 IF SOMETHING GOES WRONG
------------------------
-- Panel blank, or icon missing: reload with Cmd+Shift+R. If it persists,
-  check Part 3 step 3 works, then redo Part 4.
-- My Extensions still shows an old version: you probably re-added an old
-  address. The address must end in manifest-1-2-0.json.
-- Player changes or attack damage don't take effect: the GM must be in the
-  room; those changes are saved by the GM's browser.
+- Panel blank or old version: reload with Cmd+Shift+R; check step 3; redo step 4.
+- Players' changes or damage not applied: the GM must be in the room.

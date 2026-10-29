@@ -1,38 +1,47 @@
-# Combat Tokens (Owlbear Rodeo extension)
-
-Puts combat stats on tokens, rolls initiative, and resolves attacks with automatic damage.
+# Combat Tokens 1.4.0 (Owlbear Rodeo extension)
 
 ## On the map
-**Health ring** around every token, seen by everyone: green at 75%+ of Max HP, yellow 25–74%,
-red 1–24%, grey at 0 or below. (Needs Max HP set; no ring without it.)
+- **Health ring** on every token (everyone sees it): green 75%+ of Max HP, amber 25–74%, red 1–24%.
+  **Down** (0 HP or less): dark-red ring, red tint, blood-drop marker. **Dead** (−Max HP or less): grey,
+  skull marker, badges removed.
+- **Badges** (GM sees all; a player sees only their own characters): top tray HP, Defense, Armor,
+  Shield; bottom tray to-hit of the weapon in hand | Resist sorcery.
+- **Click a token** to see its public note beside it (everyone). Its player and the GM also see
+  dashed circles: movement (pale) and the in-hand weapon's range (amber, only if range > 1). 1 hex = 1 grid space.
 
-**Stat badges** — across the top: **HP** (red heart), **Defense** (blue ring), **Armor** (steel ring),
-**Shield** (shield); below: **To-hit** (sword). The GM sees badges on every token; a player sees
-them only on their own tokens. Players see nothing on hidden tokens.
+## Right-click menus
+- **Combat stats** — tabs: Stats (HP, Max, Def, Armor, Shield, Resist, Move, Initiative L/M/H),
+  Weapons (name, to-hit, range, damage L/M/H; "use" sets the weapon in hand), Notes (public).
+  GM extras: assign a Player, load a creature from the Béthorm bestiary, Save as template, Remove.
+- **Damage / Heal** (GM only) — type a number, press Damage or Heal (healing stops at Max).
+- **Attack this target** — attacker list (nearest first; GM: hidden tokens only if ticked; the downed
+  and dead can't attack), weapon buttons if the attacker has more than one. The weapon used becomes
+  the weapon in hand.
 
-## Stats (right-click a token → Combat stats)
-HP, Max HP, Defense, Armor, Shield, To-hit, plus Damage Low/Med/High and Initiative Low/Med/High (not drawn
-on the map). The GM can edit any token and assign a token to a player. A player can edit only their own
-tokens: ones they placed, or ones the GM assigned to them. Players' changes are saved by the GM's
-browser, so the GM must be in the room.
-
-## Attacking (right-click the target → Attack this target)
-Pick your attacker (players only see their own characters) and press Attack.
-- To hit: 2d10 must be **under** attacker's To-hit − target's Defense − target's Shield.
-- Damage: d10 → 1–2 Low, 3–8 Medium, 9–10 High damage, minus target's Armor (never below 0).
-- On a hit the target's HP drops automatically (GM must be in the room). Everyone gets a notification,
-  and the attack goes in the log. Hidden attackers/targets are shown to players as "unseen".
-- Players see their own to-hit, their dice, and the damage dealt — never the target's defense, shield,
-  armor or HP. The GM sees the full breakdown.
+## Rules
+- To hit: 2d10 must be UNDER weapon to-hit − target Defense − target Shield.
+- Damage: d10 → 1–2 Low, 3–8 Medium, 9–10 High weapon damage, minus target Armor (never below 0).
+- Initiative: d10 → 1–2 Low, 3–8 Medium, 9–10 High initiative value, highest first.
 
 ## Panel (toolbar icon)
-- **Initiative** (GM rolls, everyone sees): d10 per token → 1–2 Low, 3–8 Med, 9–10 High initiative
-  value, highest first. Players see the order for everyone but the numbers only for their own
-  characters. Click a name to select the token.
-- **Attacks**: log of recent attacks in this scene.
-- **Setup** (GM): "Give stats to all characters" adds zeroed stats to every character token
-  that doesn't have them.
+- **Initiative** — Start combat, Next round (re-rolls automatically every 3 rounds; change in Setup),
+  End combat. Downed characters drop to the bottom; the dead leave the list.
+- **Attacks** — log of attacks and damage/healing; GM can Undo any entry.
+- **Setup** (GM) — give stats to all; re-roll interval; monster templates (list, apply, import,
+  export); backup / restore of this scene's stats, notes, assignments and templates.
 
-## Installing or updating (version 1.2.0)
+## Players and ownership
+A token belongs to a player only when the GM assigns it (Combat stats → Player). Players' edits and
+attack damage are applied by the GM's browser, so the GM must be in the room. With the GM open in two
+windows, only one applies anything.
 
-See INSTALL.txt in this folder for step-by-step instructions.
+
+## Béthorm bestiary (1.4.0)
+All 243 creatures from the Béthorm bestiary are built in (bestiary.json). Two ways to use them (GM):
+- Name a token after the creature, e.g. "Ahoggyá, Medium/Soldier" or "Ahoggya, Medium/Soldier 3" —
+  accents and a trailing number don't matter. It gets the creature's stats as soon as it is on the map.
+- Or open Combat stats on any token and use the Bestiary box: type a few letters, pick, press Load.
+Your own templates (Setup) win over the book when the names are the same.
+Conversion: Hits → HP and Max; Melee defense → Defense (the book already counts shields, so Shield 0);
+first Armor number → Armor; Magic defense → Resist; Initiative a/b/c → Low/Med/High; first Movement
+number → Move; each attack with damage → a weapon (to-hit as printed, range from "N” range", else 1).

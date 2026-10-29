@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Damage / Heal</title>
+  <link rel="stylesheet" href="style.css?v=1.4.0" />
+</head>
+<body class="embed">
+  <p id="status" class="muted">Loading…</p>
+  <div id="form" hidden>
+    <div class="muted" id="who" style="margin-bottom:6px"></div>
+    <div class="dh">
+      <input id="amount" type="number" inputmode="numeric" min="0" placeholder="0" />
+      <button id="damage" class="btn-dmg">Damage</button>
+      <button id="heal" class="btn-heal">Heal</button>
+    </div>
+  </div>
+  <script type="module" src="damage.js?v=1.4.0"></script>
+</body>
+</html>

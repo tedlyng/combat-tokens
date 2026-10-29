@@ -4,9 +4,9 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Attack</title>
-  <link rel="stylesheet" href="style.css?v=1.2.0" />
+  <link rel="stylesheet" href="style.css?v=1.4.0" />
 </head>
-<body>
+<body class="embed">
   <p id="status" class="muted">Loading…</p>
   <div id="form" hidden>
     <label class="muted" for="attacker">Attacker</label>
@@ -14,9 +14,11 @@
       <select id="attacker"></select>
       <button id="roll" class="primary">Attack</button>
     </div>
+    <label class="check gm-only-block" hidden><input id="include-hidden" type="checkbox" /> Include hidden attackers</label>
+    <div class="seg" id="weapons" hidden></div>
     <p class="need" id="need"></p>
     <div class="result" id="result" aria-live="polite"></div>
   </div>
-  <script type="module" src="attack.js?v=1.2.0"></script>
+  <script type="module" src="attack.js?v=1.4.0"></script>
 </body>
 </html>

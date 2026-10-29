@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Combat Tokens</title>
-  <link rel="stylesheet" href="style.css?v=1.2.0" />
+  <link rel="stylesheet" href="style.css?v=1.4.0" />
 </head>
 <body class="panel">
   <p id="status" class="muted">Loading…</p>
@@ -12,16 +12,20 @@
 
   <div id="main" hidden>
     <div class="tabs" role="tablist">
-      <button class="tab" role="tab" data-tab="init" aria-selected="true">Initiative</button>
-      <button class="tab" role="tab" data-tab="log" aria-selected="false">Attacks</button>
-      <button class="tab gm-only" role="tab" data-tab="setup" aria-selected="false">Setup</button>
+      <button class="tab" data-tab="init" aria-selected="true">Initiative</button>
+      <button class="tab" data-tab="log" aria-selected="false">Attacks</button>
+      <button class="tab gm-only" data-tab="setup" aria-selected="false">Setup</button>
     </div>
 
     <section data-panel="init">
+      <div class="round" id="round-bar" hidden>
+        <span>Round <b id="round"></b> <span class="pill" id="next-reroll"></span></span>
+        <button id="next-round" class="primary gm-only" style="flex:none">Next round</button>
+      </div>
       <div class="gm-only">
         <div class="buttons">
-          <button id="roll" class="primary">Roll initiative</button>
-          <button id="clear">Clear</button>
+          <button id="roll" class="primary">Start combat</button>
+          <button id="clear">End combat</button>
         </div>
         <label class="check"><input id="include-hidden" type="checkbox" /> Include hidden tokens</label>
       </div>
@@ -30,19 +34,39 @@
     </section>
 
     <section data-panel="log" hidden>
-      <p class="muted" id="log-empty">No attacks yet in this scene.</p>
+      <p class="muted" id="log-empty">Nothing yet in this scene.</p>
       <ul class="log" id="log"></ul>
-      <div class="gm-only" style="margin-top:8px"><button id="clear-log" class="link">Clear attack log</button></div>
+      <div class="gm-only" style="margin-top:8px"><button id="clear-log" class="link">Clear the log</button></div>
     </section>
 
     <section data-panel="setup" class="setup" hidden>
-      <p>Give every character token on the map combat stats (all zero) so their badges appear. Tokens that already have stats aren't changed.</p>
-      <button id="give-all" class="primary">Give stats to all characters</button>
-      <p>Then right-click a token and choose <b>Combat stats</b> to fill in its numbers, or to assign it to a player.</p>
-      <p>Players attack by right-clicking a target and choosing <b>Attack this target</b>.</p>
+      <h3>Tokens</h3>
+      <button id="give-all">Give stats to all characters</button>
+      <p>Adds zeroed stats to every character token that has none. Existing stats aren't touched.</p>
+
+      <h3>Initiative</h3>
+      <label class="inline">Re-roll every <input id="reroll-every" type="number" min="1" max="20" style="width:52px"> rounds</label>
+
+      <h3>Monster templates</h3>
+      <p>Save one from a token's Combat stats menu. Any token with that name dropped on the map gets the stats automatically ("Orc 2" uses "Orc").</p>
+      <ul id="templates" class="tpl"></ul>
+      <div class="buttons wrap">
+        <button id="apply-templates">Apply to this scene now</button>
+        <button id="import-templates">Import…</button>
+        <button id="export-templates">Export</button>
+      </div>
+
+      <h3>Backup</h3>
+      <p>Saves every token's stats, notes and player assignments in this scene, plus your templates.</p>
+      <div class="buttons wrap">
+        <button id="backup">Download backup</button>
+        <button id="restore">Restore from backup…</button>
+      </div>
+      <input id="file" type="file" accept=".json,application/json" hidden />
+      <p id="setup-msg" class="muted"></p>
     </section>
   </div>
-  <p id="version">v1.2.0</p>
-  <script type="module" src="panel.js?v=1.2.0"></script>
+  <p id="version">v1.4.0</p>
+  <script type="module" src="panel.js?v=1.4.0"></script>
 </body>
 </html>
